@@ -1,0 +1,1565 @@
+[
+  {
+    "name": "valid-Document",
+    "contract": "Document",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "original_filename": "authored-example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "storage_key": "documents/example.pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 671,
+      "page_count": null,
+      "metadata": {},
+      "processing": {
+        "status": "queued",
+        "stage": null,
+        "counts": {
+          "pages_processed": 0,
+          "pages_total": null,
+          "chunks_processed": 0,
+          "facts_accepted": 0,
+          "facts_rejected": 0,
+          "comparisons_completed": 0,
+          "comparisons_failed": 0
+        }
+      },
+      "active_run_id": null,
+      "created_at": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-09T00:00:00Z"
+    }
+  },
+  {
+    "name": "extra-field-Document",
+    "contract": "Document",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "original_filename": "authored-example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "storage_key": "documents/example.pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 671,
+      "page_count": null,
+      "metadata": {},
+      "processing": {
+        "status": "queued",
+        "stage": null,
+        "counts": {
+          "pages_processed": 0,
+          "pages_total": null,
+          "chunks_processed": 0,
+          "facts_accepted": 0,
+          "facts_rejected": 0,
+          "comparisons_completed": 0,
+          "comparisons_failed": 0
+        }
+      },
+      "active_run_id": null,
+      "created_at": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-09T00:00:00Z",
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ProcessingStatus",
+    "contract": "ProcessingStatus",
+    "valid": true,
+    "payload": {
+      "status": "queued",
+      "stage": null,
+      "counts": {
+        "pages_processed": 0,
+        "pages_total": null,
+        "chunks_processed": 0,
+        "facts_accepted": 0,
+        "facts_rejected": 0,
+        "comparisons_completed": 0,
+        "comparisons_failed": 0
+      }
+    }
+  },
+  {
+    "name": "extra-field-ProcessingStatus",
+    "contract": "ProcessingStatus",
+    "valid": false,
+    "payload": {
+      "status": "queued",
+      "stage": null,
+      "counts": {
+        "pages_processed": 0,
+        "pages_total": null,
+        "chunks_processed": 0,
+        "facts_accepted": 0,
+        "facts_rejected": 0,
+        "comparisons_completed": 0,
+        "comparisons_failed": 0
+      },
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ProcessingJob",
+    "contract": "ProcessingJob",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "processing": {
+        "status": "queued",
+        "stage": null,
+        "counts": {
+          "pages_processed": 0,
+          "pages_total": null,
+          "chunks_processed": 0,
+          "facts_accepted": 0,
+          "facts_rejected": 0,
+          "comparisons_completed": 0,
+          "comparisons_failed": 0
+        }
+      },
+      "attempt": 0,
+      "heartbeat_at": null,
+      "next_attempt_at": null,
+      "lease_token": null,
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "checkpoint": {},
+      "started_at": null,
+      "ended_at": null
+    }
+  },
+  {
+    "name": "extra-field-ProcessingJob",
+    "contract": "ProcessingJob",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "processing": {
+        "status": "queued",
+        "stage": null,
+        "counts": {
+          "pages_processed": 0,
+          "pages_total": null,
+          "chunks_processed": 0,
+          "facts_accepted": 0,
+          "facts_rejected": 0,
+          "comparisons_completed": 0,
+          "comparisons_failed": 0
+        }
+      },
+      "attempt": 0,
+      "heartbeat_at": null,
+      "next_attempt_at": null,
+      "lease_token": null,
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "checkpoint": {},
+      "started_at": null,
+      "ended_at": null,
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-DocumentBlock",
+    "contract": "DocumentBlock",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "local_ref": "#/texts/0",
+      "label": "text",
+      "original_text": "The example collection contains 12 items.",
+      "structure": {},
+      "parent_block_id": null,
+      "section": [],
+      "reading_order": 0,
+      "provenance": [
+        {
+          "physical_page": 1,
+          "printed_labels": [],
+          "original_page": null,
+          "bbox": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "extra-field-DocumentBlock",
+    "contract": "DocumentBlock",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "local_ref": "#/texts/0",
+      "label": "text",
+      "original_text": "The example collection contains 12 items.",
+      "structure": {},
+      "parent_block_id": null,
+      "section": [],
+      "reading_order": 0,
+      "provenance": [
+        {
+          "physical_page": 1,
+          "printed_labels": [],
+          "original_page": null,
+          "bbox": null
+        }
+      ],
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-DocumentChunk",
+    "contract": "DocumentChunk",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000007",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "chunk_index": 0,
+      "block_ids": [
+        "00000000-0000-4000-8000-000000000003"
+      ],
+      "contextualized_text": "The example collection contains 12 items.",
+      "token_count": 10,
+      "chunk_policy_version": "fixture-1"
+    }
+  },
+  {
+    "name": "extra-field-DocumentChunk",
+    "contract": "DocumentChunk",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000007",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "chunk_index": 0,
+      "block_ids": [
+        "00000000-0000-4000-8000-000000000003"
+      ],
+      "contextualized_text": "The example collection contains 12 items.",
+      "token_count": 10,
+      "chunk_policy_version": "fixture-1",
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-Fact",
+    "contract": "Fact",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "candidate_key": "fixture-1",
+      "assertion_text": "The example collection contains 12 items.",
+      "subject_original": "Example collection",
+      "subject_entity_id": null,
+      "predicate_original": "contains",
+      "predicate_id": null,
+      "value": {
+        "kind": "number",
+        "original_text": "12 items",
+        "normalized": "12",
+        "unit": "item",
+        "currency": null,
+        "scale": "1",
+        "comparator": "eq",
+        "approximate": false,
+        "precision": 0,
+        "normalization_status": "normalized",
+        "rule_version": "fixture-1"
+      },
+      "time": {
+        "original_label": null,
+        "kind": "unspecified",
+        "start": null,
+        "end": null,
+        "calendar_basis": null,
+        "year_label_convention": null,
+        "resolution_status": "unspecified",
+        "publication_date": null,
+        "as_of_date": null,
+        "effective_date": null
+      },
+      "qualifiers": {},
+      "polarity": "positive",
+      "modality": "asserted",
+      "confidence": 0.9,
+      "uncertainty": [],
+      "quality_state": "accepted",
+      "evidence_ids": [
+        "00000000-0000-4000-8000-000000000020"
+      ]
+    }
+  },
+  {
+    "name": "extra-field-Fact",
+    "contract": "Fact",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "candidate_key": "fixture-1",
+      "assertion_text": "The example collection contains 12 items.",
+      "subject_original": "Example collection",
+      "subject_entity_id": null,
+      "predicate_original": "contains",
+      "predicate_id": null,
+      "value": {
+        "kind": "number",
+        "original_text": "12 items",
+        "normalized": "12",
+        "unit": "item",
+        "currency": null,
+        "scale": "1",
+        "comparator": "eq",
+        "approximate": false,
+        "precision": 0,
+        "normalization_status": "normalized",
+        "rule_version": "fixture-1"
+      },
+      "time": {
+        "original_label": null,
+        "kind": "unspecified",
+        "start": null,
+        "end": null,
+        "calendar_basis": null,
+        "year_label_convention": null,
+        "resolution_status": "unspecified",
+        "publication_date": null,
+        "as_of_date": null,
+        "effective_date": null
+      },
+      "qualifiers": {},
+      "polarity": "positive",
+      "modality": "asserted",
+      "confidence": 0.9,
+      "uncertainty": [],
+      "quality_state": "accepted",
+      "evidence_ids": [
+        "00000000-0000-4000-8000-000000000020"
+      ],
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-Evidence",
+    "contract": "Evidence",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000020",
+      "fact_id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "block_id": "00000000-0000-4000-8000-000000000003",
+      "role": "assertion",
+      "selector": {
+        "kind": "block"
+      },
+      "quote": "The example collection contains 12 items.",
+      "provenance": [
+        {
+          "physical_page": 1,
+          "printed_labels": [],
+          "original_page": null,
+          "bbox": null
+        }
+      ],
+      "validation_status": "validated"
+    }
+  },
+  {
+    "name": "extra-field-Evidence",
+    "contract": "Evidence",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000020",
+      "fact_id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "block_id": "00000000-0000-4000-8000-000000000003",
+      "role": "assertion",
+      "selector": {
+        "kind": "block"
+      },
+      "quote": "The example collection contains 12 items.",
+      "provenance": [
+        {
+          "physical_page": 1,
+          "printed_labels": [],
+          "original_page": null,
+          "bbox": null
+        }
+      ],
+      "validation_status": "validated",
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-Relationship",
+    "contract": "Relationship",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "CORROBORATED",
+      "explanation": "Authored contract example: both assertions give the same item count.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  {
+    "name": "extra-field-Relationship",
+    "contract": "Relationship",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "CORROBORATED",
+      "explanation": "Authored contract example: both assertions give the same item count.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ProcessingIssue",
+    "contract": "ProcessingIssue",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000040",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "stage": "extraction",
+      "code": "STAGE_NOT_IMPLEMENTED",
+      "affected_ids": [],
+      "severity": "info",
+      "observed_problem": "Authored diagnostic example.",
+      "action_taken": "No extraction attempted.",
+      "retryable": false,
+      "resolution": null,
+      "artifact_key": null,
+      "created_at": "2026-09-09T00:00:00Z"
+    }
+  },
+  {
+    "name": "extra-field-ProcessingIssue",
+    "contract": "ProcessingIssue",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000040",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "stage": "extraction",
+      "code": "STAGE_NOT_IMPLEMENTED",
+      "affected_ids": [],
+      "severity": "info",
+      "observed_problem": "Authored diagnostic example.",
+      "action_taken": "No extraction attempted.",
+      "retryable": false,
+      "resolution": null,
+      "artifact_key": null,
+      "created_at": "2026-09-09T00:00:00Z",
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ProcessRequest",
+    "contract": "ProcessRequest",
+    "valid": true,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "storage_key": "documents/example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "limits": {
+        "max_pages": 2,
+        "max_bytes": 100000,
+        "timeout_seconds": 180,
+        "chunk_token_budget": 2048
+      }
+    }
+  },
+  {
+    "name": "extra-field-ProcessRequest",
+    "contract": "ProcessRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "storage_key": "documents/example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "limits": {
+        "max_pages": 2,
+        "max_bytes": 100000,
+        "timeout_seconds": 180,
+        "chunk_token_budget": 2048
+      },
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ProcessResponse",
+    "contract": "ProcessResponse",
+    "valid": true,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "status": "failed",
+      "artifacts": [],
+      "counts": {
+        "pages_processed": 0,
+        "pages_total": null,
+        "chunks_processed": 0,
+        "facts_accepted": 0,
+        "facts_rejected": 0,
+        "comparisons_completed": 0,
+        "comparisons_failed": 0
+      },
+      "issues": [
+        {
+          "id": "00000000-0000-4000-8000-000000000040",
+          "run_id": "00000000-0000-4000-8000-000000000002",
+          "stage": "extraction",
+          "code": "STAGE_NOT_IMPLEMENTED",
+          "affected_ids": [],
+          "severity": "info",
+          "observed_problem": "Authored diagnostic example.",
+          "action_taken": "No extraction attempted.",
+          "retryable": false,
+          "resolution": null,
+          "artifact_key": null,
+          "created_at": "2026-09-09T00:00:00Z"
+        }
+      ]
+    }
+  },
+  {
+    "name": "extra-field-ProcessResponse",
+    "contract": "ProcessResponse",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "status": "failed",
+      "artifacts": [],
+      "counts": {
+        "pages_processed": 0,
+        "pages_total": null,
+        "chunks_processed": 0,
+        "facts_accepted": 0,
+        "facts_rejected": 0,
+        "comparisons_completed": 0,
+        "comparisons_failed": 0
+      },
+      "issues": [
+        {
+          "id": "00000000-0000-4000-8000-000000000040",
+          "run_id": "00000000-0000-4000-8000-000000000002",
+          "stage": "extraction",
+          "code": "STAGE_NOT_IMPLEMENTED",
+          "affected_ids": [],
+          "severity": "info",
+          "observed_problem": "Authored diagnostic example.",
+          "action_taken": "No extraction attempted.",
+          "retryable": false,
+          "resolution": null,
+          "artifact_key": null,
+          "created_at": "2026-09-09T00:00:00Z"
+        }
+      ],
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ReasonRequest",
+    "contract": "ReasonRequest",
+    "valid": true,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "pairs": [
+        {
+          "fact_a": {
+            "id": "00000000-0000-4000-8000-000000000010",
+            "document_id": "00000000-0000-4000-8000-000000000001",
+            "run_id": "00000000-0000-4000-8000-000000000002",
+            "candidate_key": "fixture-1",
+            "assertion_text": "The example collection contains 12 items.",
+            "subject_original": "Example collection",
+            "subject_entity_id": null,
+            "predicate_original": "contains",
+            "predicate_id": null,
+            "value": {
+              "kind": "number",
+              "original_text": "12 items",
+              "normalized": "12",
+              "unit": "item",
+              "currency": null,
+              "scale": "1",
+              "comparator": "eq",
+              "approximate": false,
+              "precision": 0,
+              "normalization_status": "normalized",
+              "rule_version": "fixture-1"
+            },
+            "time": {
+              "original_label": null,
+              "kind": "unspecified",
+              "start": null,
+              "end": null,
+              "calendar_basis": null,
+              "year_label_convention": null,
+              "resolution_status": "unspecified",
+              "publication_date": null,
+              "as_of_date": null,
+              "effective_date": null
+            },
+            "qualifiers": {},
+            "polarity": "positive",
+            "modality": "asserted",
+            "confidence": 0.9,
+            "uncertainty": [],
+            "quality_state": "accepted",
+            "evidence_ids": [
+              "00000000-0000-4000-8000-000000000020"
+            ]
+          },
+          "fact_b": {
+            "id": "00000000-0000-4000-8000-000000000011",
+            "document_id": "00000000-0000-4000-8000-000000000004",
+            "run_id": "00000000-0000-4000-8000-000000000005",
+            "candidate_key": "fixture-1",
+            "assertion_text": "The example collection contains 12 items.",
+            "subject_original": "Example collection",
+            "subject_entity_id": null,
+            "predicate_original": "contains",
+            "predicate_id": null,
+            "value": {
+              "kind": "number",
+              "original_text": "12 items",
+              "normalized": "12",
+              "unit": "item",
+              "currency": null,
+              "scale": "1",
+              "comparator": "eq",
+              "approximate": false,
+              "precision": 0,
+              "normalization_status": "normalized",
+              "rule_version": "fixture-1"
+            },
+            "time": {
+              "original_label": null,
+              "kind": "unspecified",
+              "start": null,
+              "end": null,
+              "calendar_basis": null,
+              "year_label_convention": null,
+              "resolution_status": "unspecified",
+              "publication_date": null,
+              "as_of_date": null,
+              "effective_date": null
+            },
+            "qualifiers": {},
+            "polarity": "positive",
+            "modality": "asserted",
+            "confidence": 0.9,
+            "uncertainty": [],
+            "quality_state": "accepted",
+            "evidence_ids": [
+              "00000000-0000-4000-8000-000000000021"
+            ]
+          },
+          "evidence": [
+            {
+              "id": "00000000-0000-4000-8000-000000000020",
+              "fact_id": "00000000-0000-4000-8000-000000000010",
+              "document_id": "00000000-0000-4000-8000-000000000001",
+              "run_id": "00000000-0000-4000-8000-000000000002",
+              "block_id": "00000000-0000-4000-8000-000000000003",
+              "role": "assertion",
+              "selector": {
+                "kind": "block"
+              },
+              "quote": "The example collection contains 12 items.",
+              "provenance": [
+                {
+                  "physical_page": 1,
+                  "printed_labels": [],
+                  "original_page": null,
+                  "bbox": null
+                }
+              ],
+              "validation_status": "validated"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000021",
+              "fact_id": "00000000-0000-4000-8000-000000000011",
+              "document_id": "00000000-0000-4000-8000-000000000004",
+              "run_id": "00000000-0000-4000-8000-000000000005",
+              "block_id": "00000000-0000-4000-8000-000000000006",
+              "role": "assertion",
+              "selector": {
+                "kind": "block"
+              },
+              "quote": "The example collection contains 12 items.",
+              "provenance": [
+                {
+                  "physical_page": 1,
+                  "printed_labels": [],
+                  "original_page": null,
+                  "bbox": null
+                }
+              ],
+              "validation_status": "validated"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "extra-field-ReasonRequest",
+    "contract": "ReasonRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "pairs": [
+        {
+          "fact_a": {
+            "id": "00000000-0000-4000-8000-000000000010",
+            "document_id": "00000000-0000-4000-8000-000000000001",
+            "run_id": "00000000-0000-4000-8000-000000000002",
+            "candidate_key": "fixture-1",
+            "assertion_text": "The example collection contains 12 items.",
+            "subject_original": "Example collection",
+            "subject_entity_id": null,
+            "predicate_original": "contains",
+            "predicate_id": null,
+            "value": {
+              "kind": "number",
+              "original_text": "12 items",
+              "normalized": "12",
+              "unit": "item",
+              "currency": null,
+              "scale": "1",
+              "comparator": "eq",
+              "approximate": false,
+              "precision": 0,
+              "normalization_status": "normalized",
+              "rule_version": "fixture-1"
+            },
+            "time": {
+              "original_label": null,
+              "kind": "unspecified",
+              "start": null,
+              "end": null,
+              "calendar_basis": null,
+              "year_label_convention": null,
+              "resolution_status": "unspecified",
+              "publication_date": null,
+              "as_of_date": null,
+              "effective_date": null
+            },
+            "qualifiers": {},
+            "polarity": "positive",
+            "modality": "asserted",
+            "confidence": 0.9,
+            "uncertainty": [],
+            "quality_state": "accepted",
+            "evidence_ids": [
+              "00000000-0000-4000-8000-000000000020"
+            ]
+          },
+          "fact_b": {
+            "id": "00000000-0000-4000-8000-000000000011",
+            "document_id": "00000000-0000-4000-8000-000000000004",
+            "run_id": "00000000-0000-4000-8000-000000000005",
+            "candidate_key": "fixture-1",
+            "assertion_text": "The example collection contains 12 items.",
+            "subject_original": "Example collection",
+            "subject_entity_id": null,
+            "predicate_original": "contains",
+            "predicate_id": null,
+            "value": {
+              "kind": "number",
+              "original_text": "12 items",
+              "normalized": "12",
+              "unit": "item",
+              "currency": null,
+              "scale": "1",
+              "comparator": "eq",
+              "approximate": false,
+              "precision": 0,
+              "normalization_status": "normalized",
+              "rule_version": "fixture-1"
+            },
+            "time": {
+              "original_label": null,
+              "kind": "unspecified",
+              "start": null,
+              "end": null,
+              "calendar_basis": null,
+              "year_label_convention": null,
+              "resolution_status": "unspecified",
+              "publication_date": null,
+              "as_of_date": null,
+              "effective_date": null
+            },
+            "qualifiers": {},
+            "polarity": "positive",
+            "modality": "asserted",
+            "confidence": 0.9,
+            "uncertainty": [],
+            "quality_state": "accepted",
+            "evidence_ids": [
+              "00000000-0000-4000-8000-000000000021"
+            ]
+          },
+          "evidence": [
+            {
+              "id": "00000000-0000-4000-8000-000000000020",
+              "fact_id": "00000000-0000-4000-8000-000000000010",
+              "document_id": "00000000-0000-4000-8000-000000000001",
+              "run_id": "00000000-0000-4000-8000-000000000002",
+              "block_id": "00000000-0000-4000-8000-000000000003",
+              "role": "assertion",
+              "selector": {
+                "kind": "block"
+              },
+              "quote": "The example collection contains 12 items.",
+              "provenance": [
+                {
+                  "physical_page": 1,
+                  "printed_labels": [],
+                  "original_page": null,
+                  "bbox": null
+                }
+              ],
+              "validation_status": "validated"
+            },
+            {
+              "id": "00000000-0000-4000-8000-000000000021",
+              "fact_id": "00000000-0000-4000-8000-000000000011",
+              "document_id": "00000000-0000-4000-8000-000000000004",
+              "run_id": "00000000-0000-4000-8000-000000000005",
+              "block_id": "00000000-0000-4000-8000-000000000006",
+              "role": "assertion",
+              "selector": {
+                "kind": "block"
+              },
+              "quote": "The example collection contains 12 items.",
+              "provenance": [
+                {
+                  "physical_page": 1,
+                  "printed_labels": [],
+                  "original_page": null,
+                  "bbox": null
+                }
+              ],
+              "validation_status": "validated"
+            }
+          ]
+        }
+      ],
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ReasonResponse",
+    "contract": "ReasonResponse",
+    "valid": true,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "run_id": "00000000-0000-4000-8000-000000000005",
+      "relationships": [
+        {
+          "id": "00000000-0000-4000-8000-000000000030",
+          "fact_a_id": "00000000-0000-4000-8000-000000000010",
+          "fact_b_id": "00000000-0000-4000-8000-000000000011",
+          "type": "CORROBORATED",
+          "explanation": "Authored contract example: both assertions give the same item count.",
+          "dimensions": [
+            {
+              "dimension": "unit",
+              "fact_a": "item",
+              "fact_b": "item",
+              "outcome": "aligned",
+              "explanation": "Both use items.",
+              "evidence_ids": [
+                "00000000-0000-4000-8000-000000000020",
+                "00000000-0000-4000-8000-000000000021"
+              ]
+            }
+          ],
+          "confidence": 0.8,
+          "confidence_source": "rule",
+          "unresolved_context": [],
+          "supporting_evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ],
+          "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+          "reasoning_version": "fixture-1",
+          "model_version": null,
+          "prompt_version": null,
+          "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "issues": []
+    }
+  },
+  {
+    "name": "extra-field-ReasonResponse",
+    "contract": "ReasonResponse",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "run_id": "00000000-0000-4000-8000-000000000005",
+      "relationships": [
+        {
+          "id": "00000000-0000-4000-8000-000000000030",
+          "fact_a_id": "00000000-0000-4000-8000-000000000010",
+          "fact_b_id": "00000000-0000-4000-8000-000000000011",
+          "type": "CORROBORATED",
+          "explanation": "Authored contract example: both assertions give the same item count.",
+          "dimensions": [
+            {
+              "dimension": "unit",
+              "fact_a": "item",
+              "fact_b": "item",
+              "outcome": "aligned",
+              "explanation": "Both use items.",
+              "evidence_ids": [
+                "00000000-0000-4000-8000-000000000020",
+                "00000000-0000-4000-8000-000000000021"
+              ]
+            }
+          ],
+          "confidence": 0.8,
+          "confidence_source": "rule",
+          "unresolved_context": [],
+          "supporting_evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ],
+          "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+          "reasoning_version": "fixture-1",
+          "model_version": null,
+          "prompt_version": null,
+          "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "issues": [],
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-ApiError",
+    "contract": "ApiError",
+    "valid": true,
+    "payload": {
+      "error": {
+        "code": "STAGE_NOT_IMPLEMENTED",
+        "message": "Not implemented.",
+        "request_id": "00000000-0000-4000-8000-000000000050",
+        "retryable": false
+      }
+    }
+  },
+  {
+    "name": "extra-field-ApiError",
+    "contract": "ApiError",
+    "valid": false,
+    "payload": {
+      "error": {
+        "code": "STAGE_NOT_IMPLEMENTED",
+        "message": "Not implemented.",
+        "request_id": "00000000-0000-4000-8000-000000000050",
+        "retryable": false
+      },
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "valid-Health",
+    "contract": "Health",
+    "valid": true,
+    "payload": {
+      "service": "processing",
+      "status": "ok",
+      "contract_version": "1.0",
+      "checks": {
+        "contracts": "ok"
+      }
+    }
+  },
+  {
+    "name": "extra-field-Health",
+    "contract": "Health",
+    "valid": false,
+    "payload": {
+      "service": "processing",
+      "status": "ok",
+      "contract_version": "1.0",
+      "checks": {
+        "contracts": "ok"
+      },
+      "unexpected_field": "must be rejected"
+    }
+  },
+  {
+    "name": "number-must-be-decimal-string",
+    "contract": "Fact",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "candidate_key": "fixture-1",
+      "assertion_text": "The example collection contains 12 items.",
+      "subject_original": "Example collection",
+      "subject_entity_id": null,
+      "predicate_original": "contains",
+      "predicate_id": null,
+      "value": {
+        "kind": "number",
+        "original_text": "12 items",
+        "normalized": 12,
+        "unit": "item",
+        "currency": null,
+        "scale": "1",
+        "comparator": "eq",
+        "approximate": false,
+        "precision": 0,
+        "normalization_status": "normalized",
+        "rule_version": "fixture-1"
+      },
+      "time": {
+        "original_label": null,
+        "kind": "unspecified",
+        "start": null,
+        "end": null,
+        "calendar_basis": null,
+        "year_label_convention": null,
+        "resolution_status": "unspecified",
+        "publication_date": null,
+        "as_of_date": null,
+        "effective_date": null
+      },
+      "qualifiers": {},
+      "polarity": "positive",
+      "modality": "asserted",
+      "confidence": 0.9,
+      "uncertainty": [],
+      "quality_state": "accepted",
+      "evidence_ids": [
+        "00000000-0000-4000-8000-000000000020"
+      ]
+    }
+  },
+  {
+    "name": "confidence-out-of-range",
+    "contract": "Fact",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "candidate_key": "fixture-1",
+      "assertion_text": "The example collection contains 12 items.",
+      "subject_original": "Example collection",
+      "subject_entity_id": null,
+      "predicate_original": "contains",
+      "predicate_id": null,
+      "value": {
+        "kind": "number",
+        "original_text": "12 items",
+        "normalized": "12",
+        "unit": "item",
+        "currency": null,
+        "scale": "1",
+        "comparator": "eq",
+        "approximate": false,
+        "precision": 0,
+        "normalization_status": "normalized",
+        "rule_version": "fixture-1"
+      },
+      "time": {
+        "original_label": null,
+        "kind": "unspecified",
+        "start": null,
+        "end": null,
+        "calendar_basis": null,
+        "year_label_convention": null,
+        "resolution_status": "unspecified",
+        "publication_date": null,
+        "as_of_date": null,
+        "effective_date": null
+      },
+      "qualifiers": {},
+      "polarity": "positive",
+      "modality": "asserted",
+      "confidence": 1.5,
+      "uncertainty": [],
+      "quality_state": "accepted",
+      "evidence_ids": [
+        "00000000-0000-4000-8000-000000000020"
+      ]
+    }
+  },
+  {
+    "name": "missing-evidence",
+    "contract": "Fact",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "candidate_key": "fixture-1",
+      "assertion_text": "The example collection contains 12 items.",
+      "subject_original": "Example collection",
+      "subject_entity_id": null,
+      "predicate_original": "contains",
+      "predicate_id": null,
+      "value": {
+        "kind": "number",
+        "original_text": "12 items",
+        "normalized": "12",
+        "unit": "item",
+        "currency": null,
+        "scale": "1",
+        "comparator": "eq",
+        "approximate": false,
+        "precision": 0,
+        "normalization_status": "normalized",
+        "rule_version": "fixture-1"
+      },
+      "time": {
+        "original_label": null,
+        "kind": "unspecified",
+        "start": null,
+        "end": null,
+        "calendar_basis": null,
+        "year_label_convention": null,
+        "resolution_status": "unspecified",
+        "publication_date": null,
+        "as_of_date": null,
+        "effective_date": null
+      },
+      "qualifiers": {},
+      "polarity": "positive",
+      "modality": "asserted",
+      "confidence": 0.9,
+      "uncertainty": [],
+      "quality_state": "accepted",
+      "evidence_ids": []
+    }
+  },
+  {
+    "name": "invented-label",
+    "contract": "Relationship",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "TRUE",
+      "explanation": "Authored contract example: both assertions give the same item count.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  {
+    "name": "zero-page",
+    "contract": "Evidence",
+    "valid": false,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000020",
+      "fact_id": "00000000-0000-4000-8000-000000000010",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "block_id": "00000000-0000-4000-8000-000000000003",
+      "role": "assertion",
+      "selector": {
+        "kind": "block"
+      },
+      "quote": "The example collection contains 12 items.",
+      "provenance": [
+        {
+          "physical_page": 0,
+          "printed_labels": [],
+          "original_page": null,
+          "bbox": null
+        }
+      ],
+      "validation_status": "validated"
+    }
+  },
+  {
+    "name": "path-traversal",
+    "contract": "ProcessRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "storage_key": "../secret.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "limits": {
+        "max_pages": 2,
+        "max_bytes": 100000,
+        "timeout_seconds": 180,
+        "chunk_token_budget": 2048
+      }
+    }
+  },
+  {
+    "name": "absolute-path",
+    "contract": "ProcessRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "storage_key": "C:/secret.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "limits": {
+        "max_pages": 2,
+        "max_bytes": 100000,
+        "timeout_seconds": 180,
+        "chunk_token_budget": 2048
+      }
+    }
+  },
+  {
+    "name": "bad-version",
+    "contract": "ProcessRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "2.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "document_id": "00000000-0000-4000-8000-000000000001",
+      "run_id": "00000000-0000-4000-8000-000000000002",
+      "lease_token": "00000000-0000-4000-8000-000000000051",
+      "storage_key": "documents/example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "versions": {
+        "pipeline": "foundation-1",
+        "schema_version": "1.0",
+        "conversion": "docling-smoke-1",
+        "chunking": "pending",
+        "normalization": "pending",
+        "model": null,
+        "prompt": null
+      },
+      "limits": {
+        "max_pages": 2,
+        "max_bytes": 100000,
+        "timeout_seconds": 180,
+        "chunk_token_budget": 2048
+      }
+    }
+  },
+  {
+    "name": "empty-pairs",
+    "contract": "ReasonRequest",
+    "valid": false,
+    "payload": {
+      "contract_version": "1.0",
+      "request_id": "00000000-0000-4000-8000-000000000050",
+      "run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "pairs": []
+    }
+  },
+  {
+    "name": "bad-uuid",
+    "contract": "Document",
+    "valid": false,
+    "payload": {
+      "id": "not-an-id",
+      "original_filename": "authored-example.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "storage_key": "documents/example.pdf",
+      "content_type": "application/pdf",
+      "size_bytes": 671,
+      "page_count": null,
+      "metadata": {},
+      "processing": {
+        "status": "queued",
+        "stage": null,
+        "counts": {
+          "pages_processed": 0,
+          "pages_total": null,
+          "chunks_processed": 0,
+          "facts_accepted": 0,
+          "facts_rejected": 0,
+          "comparisons_completed": 0,
+          "comparisons_failed": 0
+        }
+      },
+      "active_run_id": null,
+      "created_at": "2026-09-09T00:00:00Z",
+      "updated_at": "2026-09-09T00:00:00Z"
+    }
+  },
+  {
+    "name": "label-CONTRADICTED",
+    "contract": "Relationship",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "CONTRADICTED",
+      "explanation": "Label validation fixture only; not a measured reasoning result.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  {
+    "name": "label-RECONCILED",
+    "contract": "Relationship",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "RECONCILED",
+      "explanation": "Label validation fixture only; not a measured reasoning result.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  {
+    "name": "label-UNCERTAIN",
+    "contract": "Relationship",
+    "valid": true,
+    "payload": {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "fact_a_id": "00000000-0000-4000-8000-000000000010",
+      "fact_b_id": "00000000-0000-4000-8000-000000000011",
+      "type": "UNCERTAIN",
+      "explanation": "Label validation fixture only; not a measured reasoning result.",
+      "dimensions": [
+        {
+          "dimension": "unit",
+          "fact_a": "item",
+          "fact_b": "item",
+          "outcome": "aligned",
+          "explanation": "Both use items.",
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000020",
+            "00000000-0000-4000-8000-000000000021"
+          ]
+        }
+      ],
+      "confidence": 0.8,
+      "confidence_source": "rule",
+      "unresolved_context": [],
+      "supporting_evidence_ids": [
+        "00000000-0000-4000-8000-000000000020",
+        "00000000-0000-4000-8000-000000000021"
+      ],
+      "reasoning_run_id": "00000000-0000-4000-8000-000000000005",
+      "reasoning_version": "fixture-1",
+      "model_version": null,
+      "prompt_version": null,
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  }
+]
