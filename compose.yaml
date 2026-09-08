@@ -1,0 +1,105 @@
+name: superjoin
+services:
+  postgres:
+    image: postgres:17.11-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-superjoin}
+      POSTGRES_DB: ${POSTGRES_DB:-superjoin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  processing:
+    build:
+      context: .
+      dockerfile: processing/Dockerfile
+    environment:
+      UPLOAD_ROOT: /data/uploads
+      ARTIFACT_ROOT: /data/artifacts
+      MODEL_CACHE_DIR: /data/model-cache
+      HF_HOME: /data/model-cache
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LIVE_LLM_ENABLED: ${LIVE_LLM_ENABLED:-false}
+      LLM_CONCURRENCY: ${LLM_CONCURRENCY:-2}
+      CONVERSION_CONCURRENCY: ${CONVERSION_CONCURRENCY:-1}
+      DOCLING_DO_OCR: ${DOCLING_DO_OCR:-false}
+      DOCLING_DO_TABLE_STRUCTURE: ${DOCLING_DO_TABLE_STRUCTURE:-true}
+      MAX_PDF_PAGES: ${MAX_PDF_PAGES:-100}
+      MAX_UPLOAD_BYTES: ${MAX_UPLOAD_BYTES:-20000000}
+      PROCESSING_TIMEOUT_SECONDS: ${PROCESSING_TIMEOUT_SECONDS:-300}
+      CHUNK_TOKEN_BUDGET: ${CHUNK_TOKEN_BUDGET:-2048}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    volumes:
+      - uploads:/data/uploads:ro
+      - artifacts:/data/artifacts
+      - model-cache:/data/model-cache
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-superjoin}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-superjoin}
+      PROCESSING_SERVICE_URL: http://processing:8000
+      UPLOAD_ROOT: /data/uploads
+      ARTIFACT_ROOT: /data/artifacts
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      CONVERSION_CONCURRENCY: ${CONVERSION_CONCURRENCY:-1}
+      LLM_CONCURRENCY: ${LLM_CONCURRENCY:-2}
+      JOB_HEARTBEAT_SECONDS: ${JOB_HEARTBEAT_SECONDS:-10}
+      JOB_LEASE_SECONDS: ${JOB_LEASE_SECONDS:-60}
+      JOB_MAX_ATTEMPTS: ${JOB_MAX_ATTEMPTS:-3}
+      PROCESSING_TIMEOUT_SECONDS: ${PROCESSING_TIMEOUT_SECONDS:-300}
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+    command: [sh, -c, "node dist/repositories/migrate-cli.js && node dist/server.js"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      processing: {condition: service_healthy}
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - uploads:/data/uploads
+      - artifacts:/data/artifacts:ro
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      VITE_API_BASE_URL: /backend
+      BACKEND_PROXY_TARGET: http://backend:3000
+    depends_on:
+      backend: {condition: service_healthy}
+    ports:
+      - 127.0.0.1:5173:5173
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:5173').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  postgres-data:
+  uploads:
+  artifacts:
+  model-cache:
