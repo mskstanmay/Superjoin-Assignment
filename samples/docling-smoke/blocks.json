@@ -1,0 +1,58 @@
+[
+  {
+    "id": "b3d80897-e93f-594a-82e1-853f0baeeae1",
+    "document_id": "844ee6dc-74d3-552d-859e-b6766d2d2cae",
+    "run_id": "310a0bc7-5b85-50b0-a7a1-54d827bfffda",
+    "local_ref": "#/texts/0",
+    "label": "section_header",
+    "original_text": "Provenance smoke test",
+    "structure": {},
+    "parent_block_id": null,
+    "section": [],
+    "reading_order": 0,
+    "provenance": [
+      {
+        "physical_page": 1,
+        "printed_labels": [],
+        "original_page": null,
+        "bbox": {
+          "left": 72.0,
+          "top": 732.924,
+          "right": 260.08200000000005,
+          "bottom": 716.274,
+          "coordinate_origin": "BOTTOMLEFT",
+          "page_width": 612.0,
+          "page_height": 792.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "ecf80037-f45a-597c-8056-8cd4988c9749",
+    "document_id": "844ee6dc-74d3-552d-859e-b6766d2d2cae",
+    "run_id": "310a0bc7-5b85-50b0-a7a1-54d827bfffda",
+    "local_ref": "#/texts/1",
+    "label": "text",
+    "original_text": "A small document for local conversion validation.",
+    "structure": {},
+    "parent_block_id": null,
+    "section": [],
+    "reading_order": 1,
+    "provenance": [
+      {
+        "physical_page": 1,
+        "printed_labels": [],
+        "original_page": null,
+        "bbox": {
+          "left": 72.0,
+          "top": 698.616,
+          "right": 331.4280000000002,
+          "bottom": 687.516,
+          "coordinate_origin": "BOTTOMLEFT",
+          "page_width": 612.0,
+          "page_height": 792.0
+        }
+      }
+    ]
+  }
+]
