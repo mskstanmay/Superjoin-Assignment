@@ -1,0 +1,48 @@
+{
+  "$defs": {
+    "ApiErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "retryable": {
+          "title": "Retryable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "request_id",
+        "retryable"
+      ],
+      "title": "ApiErrorDetail",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "$ref": "#/$defs/ApiErrorDetail"
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "title": "ApiError",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
