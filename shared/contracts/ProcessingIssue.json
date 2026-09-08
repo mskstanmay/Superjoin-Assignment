@@ -1,0 +1,107 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "document_understanding",
+        "extraction",
+        "normalization",
+        "matching",
+        "reasoning"
+      ],
+      "title": "Stage",
+      "type": "string"
+    },
+    "code": {
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "affected_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Affected Ids",
+      "type": "array"
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "warning",
+        "error"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "observed_problem": {
+      "minLength": 1,
+      "title": "Observed Problem",
+      "type": "string"
+    },
+    "action_taken": {
+      "minLength": 1,
+      "title": "Action Taken",
+      "type": "string"
+    },
+    "retryable": {
+      "title": "Retryable",
+      "type": "boolean"
+    },
+    "resolution": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Resolution"
+    },
+    "artifact_key": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*\\.[A-Za-z0-9]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Artifact Key"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "run_id",
+    "stage",
+    "code",
+    "affected_ids",
+    "severity",
+    "observed_problem",
+    "action_taken",
+    "retryable",
+    "resolution",
+    "artifact_key",
+    "created_at"
+  ],
+  "title": "ProcessingIssue",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
