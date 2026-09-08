@@ -1,0 +1,188 @@
+{
+  "$defs": {
+    "DimensionComparison": {
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "minLength": 1,
+          "title": "Dimension",
+          "type": "string"
+        },
+        "fact_a": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "fact_b": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "outcome": {
+          "enum": [
+            "aligned",
+            "different",
+            "unknown",
+            "not_applicable"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dimension",
+        "fact_a",
+        "fact_b",
+        "outcome",
+        "explanation",
+        "evidence_ids"
+      ],
+      "title": "DimensionComparison",
+      "type": "object"
+    },
+    "JsonValue": {}
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "fact_a_id": {
+      "format": "uuid",
+      "title": "Fact A Id",
+      "type": "string"
+    },
+    "fact_b_id": {
+      "format": "uuid",
+      "title": "Fact B Id",
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "CORROBORATED",
+        "CONTRADICTED",
+        "RECONCILED",
+        "UNCERTAIN"
+      ],
+      "title": "Type",
+      "type": "string"
+    },
+    "explanation": {
+      "minLength": 1,
+      "title": "Explanation",
+      "type": "string"
+    },
+    "dimensions": {
+      "items": {
+        "$ref": "#/$defs/DimensionComparison"
+      },
+      "minItems": 1,
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "confidence": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Confidence"
+    },
+    "confidence_source": {
+      "enum": [
+        "model",
+        "rule"
+      ],
+      "title": "Confidence Source",
+      "type": "string"
+    },
+    "unresolved_context": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Context",
+      "type": "array"
+    },
+    "supporting_evidence_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Supporting Evidence Ids",
+      "type": "array"
+    },
+    "reasoning_run_id": {
+      "format": "uuid",
+      "title": "Reasoning Run Id",
+      "type": "string"
+    },
+    "reasoning_version": {
+      "minLength": 1,
+      "title": "Reasoning Version",
+      "type": "string"
+    },
+    "model_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Model Version"
+    },
+    "prompt_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Prompt Version"
+    },
+    "input_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Input Hash",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "fact_a_id",
+    "fact_b_id",
+    "type",
+    "explanation",
+    "dimensions",
+    "confidence",
+    "confidence_source",
+    "unresolved_context",
+    "supporting_evidence_ids",
+    "reasoning_run_id",
+    "reasoning_version",
+    "model_version",
+    "prompt_version",
+    "input_hash"
+  ],
+  "title": "Relationship",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
