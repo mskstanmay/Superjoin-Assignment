@@ -1,0 +1,1260 @@
+{
+  "$defs": {
+    "BlockSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "block",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "BlockSelector",
+      "type": "object"
+    },
+    "BooleanValue": {
+      "additionalProperties": false,
+      "properties": {
+        "original_text": {
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scale"
+        },
+        "approximate": {
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "precision": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Precision"
+        },
+        "normalization_status": {
+          "enum": [
+            "normalized",
+            "unchanged",
+            "ambiguous",
+            "unsupported"
+          ],
+          "title": "Normalization Status",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "kind": {
+          "const": "boolean",
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "original_text",
+        "unit",
+        "currency",
+        "scale",
+        "approximate",
+        "precision",
+        "normalization_status",
+        "rule_version",
+        "kind",
+        "normalized"
+      ],
+      "title": "BooleanValue",
+      "type": "object"
+    },
+    "BoundingBox": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "title": "Left",
+          "type": "number"
+        },
+        "top": {
+          "title": "Top",
+          "type": "number"
+        },
+        "right": {
+          "title": "Right",
+          "type": "number"
+        },
+        "bottom": {
+          "title": "Bottom",
+          "type": "number"
+        },
+        "coordinate_origin": {
+          "enum": [
+            "TOPLEFT",
+            "BOTTOMLEFT"
+          ],
+          "title": "Coordinate Origin",
+          "type": "string"
+        },
+        "page_width": {
+          "exclusiveMinimum": 0,
+          "title": "Page Width",
+          "type": "number"
+        },
+        "page_height": {
+          "exclusiveMinimum": 0,
+          "title": "Page Height",
+          "type": "number"
+        }
+      },
+      "required": [
+        "left",
+        "top",
+        "right",
+        "bottom",
+        "coordinate_origin",
+        "page_width",
+        "page_height"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "CellSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "cell",
+          "title": "Kind",
+          "type": "string"
+        },
+        "row": {
+          "minimum": 0,
+          "title": "Row",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "row",
+        "column"
+      ],
+      "title": "CellSelector",
+      "type": "object"
+    },
+    "DateValue": {
+      "additionalProperties": false,
+      "properties": {
+        "original_text": {
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scale"
+        },
+        "approximate": {
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "precision": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Precision"
+        },
+        "normalization_status": {
+          "enum": [
+            "normalized",
+            "unchanged",
+            "ambiguous",
+            "unsupported"
+          ],
+          "title": "Normalization Status",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "kind": {
+          "const": "date",
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        }
+      },
+      "required": [
+        "original_text",
+        "unit",
+        "currency",
+        "scale",
+        "approximate",
+        "precision",
+        "normalization_status",
+        "rule_version",
+        "kind",
+        "normalized"
+      ],
+      "title": "DateValue",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "fact_id": {
+          "format": "uuid",
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "document_id": {
+          "format": "uuid",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "block_id": {
+          "format": "uuid",
+          "title": "Block Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "assertion",
+            "value",
+            "subject",
+            "row_header",
+            "column_header",
+            "unit",
+            "time",
+            "footnote",
+            "qualifier"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "selector": {
+          "discriminator": {
+            "mapping": {
+              "block": "#/$defs/BlockSelector",
+              "cell": "#/$defs/CellSelector",
+              "span": "#/$defs/SpanSelector"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SpanSelector"
+            },
+            {
+              "$ref": "#/$defs/CellSelector"
+            },
+            {
+              "$ref": "#/$defs/BlockSelector"
+            }
+          ],
+          "title": "Selector"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/Provenance"
+          },
+          "minItems": 1,
+          "title": "Provenance",
+          "type": "array"
+        },
+        "validation_status": {
+          "enum": [
+            "validated",
+            "rejected",
+            "pending"
+          ],
+          "title": "Validation Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "fact_id",
+        "document_id",
+        "run_id",
+        "block_id",
+        "role",
+        "selector",
+        "quote",
+        "provenance",
+        "validation_status"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "document_id": {
+          "format": "uuid",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "candidate_key": {
+          "minLength": 1,
+          "title": "Candidate Key",
+          "type": "string"
+        },
+        "assertion_text": {
+          "minLength": 1,
+          "title": "Assertion Text",
+          "type": "string"
+        },
+        "subject_original": {
+          "minLength": 1,
+          "title": "Subject Original",
+          "type": "string"
+        },
+        "subject_entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Entity Id"
+        },
+        "predicate_original": {
+          "minLength": 1,
+          "title": "Predicate Original",
+          "type": "string"
+        },
+        "predicate_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Predicate Id"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "boolean": "#/$defs/BooleanValue",
+              "date": "#/$defs/DateValue",
+              "entity": "#/$defs/SemanticValue",
+              "number": "#/$defs/NumberValue",
+              "other": "#/$defs/SemanticValue",
+              "range": "#/$defs/RangeValue",
+              "text": "#/$defs/SemanticValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/NumberValue"
+            },
+            {
+              "$ref": "#/$defs/RangeValue"
+            },
+            {
+              "$ref": "#/$defs/SemanticValue"
+            },
+            {
+              "$ref": "#/$defs/BooleanValue"
+            },
+            {
+              "$ref": "#/$defs/DateValue"
+            }
+          ],
+          "title": "Value"
+        },
+        "time": {
+          "$ref": "#/$defs/TimeContext"
+        },
+        "qualifiers": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Qualifier"
+          },
+          "title": "Qualifiers",
+          "type": "object"
+        },
+        "polarity": {
+          "enum": [
+            "positive",
+            "negative",
+            "unknown"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        },
+        "modality": {
+          "enum": [
+            "asserted",
+            "historical",
+            "estimate",
+            "forecast",
+            "target",
+            "conditional",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Confidence"
+        },
+        "uncertainty": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainty",
+          "type": "array"
+        },
+        "quality_state": {
+          "enum": [
+            "accepted",
+            "review_needed",
+            "quarantined"
+          ],
+          "title": "Quality State",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "document_id",
+        "run_id",
+        "candidate_key",
+        "assertion_text",
+        "subject_original",
+        "subject_entity_id",
+        "predicate_original",
+        "predicate_id",
+        "value",
+        "time",
+        "qualifiers",
+        "polarity",
+        "modality",
+        "confidence",
+        "uncertainty",
+        "quality_state",
+        "evidence_ids"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "NumberValue": {
+      "additionalProperties": false,
+      "properties": {
+        "original_text": {
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scale"
+        },
+        "approximate": {
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "precision": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Precision"
+        },
+        "normalization_status": {
+          "enum": [
+            "normalized",
+            "unchanged",
+            "ambiguous",
+            "unsupported"
+          ],
+          "title": "Normalization Status",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "kind": {
+          "const": "number",
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        },
+        "comparator": {
+          "enum": [
+            "eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ],
+          "title": "Comparator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "original_text",
+        "unit",
+        "currency",
+        "scale",
+        "approximate",
+        "precision",
+        "normalization_status",
+        "rule_version",
+        "kind",
+        "normalized",
+        "comparator"
+      ],
+      "title": "NumberValue",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_page": {
+          "minimum": 1,
+          "title": "Physical Page",
+          "type": "integer"
+        },
+        "printed_labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Printed Labels",
+          "type": "array"
+        },
+        "original_page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Original Page"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundingBox"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "physical_page",
+        "printed_labels",
+        "original_page",
+        "bbox"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Qualifier": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "evidence_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "value",
+        "evidence_ids"
+      ],
+      "title": "Qualifier",
+      "type": "object"
+    },
+    "RangeValue": {
+      "additionalProperties": false,
+      "properties": {
+        "original_text": {
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scale"
+        },
+        "approximate": {
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "precision": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Precision"
+        },
+        "normalization_status": {
+          "enum": [
+            "normalized",
+            "unchanged",
+            "ambiguous",
+            "unsupported"
+          ],
+          "title": "Normalization Status",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "kind": {
+          "const": "range",
+          "title": "Kind",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Lower"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Upper"
+        },
+        "lower_inclusive": {
+          "title": "Lower Inclusive",
+          "type": "boolean"
+        },
+        "upper_inclusive": {
+          "title": "Upper Inclusive",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "original_text",
+        "unit",
+        "currency",
+        "scale",
+        "approximate",
+        "precision",
+        "normalization_status",
+        "rule_version",
+        "kind",
+        "lower",
+        "upper",
+        "lower_inclusive",
+        "upper_inclusive"
+      ],
+      "title": "RangeValue",
+      "type": "object"
+    },
+    "ReasonPair": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_a": {
+          "$ref": "#/$defs/Fact"
+        },
+        "fact_b": {
+          "$ref": "#/$defs/Fact"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 2,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_a",
+        "fact_b",
+        "evidence"
+      ],
+      "title": "ReasonPair",
+      "type": "object"
+    },
+    "SemanticValue": {
+      "additionalProperties": false,
+      "properties": {
+        "original_text": {
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "scale": {
+          "anyOf": [
+            {
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scale"
+        },
+        "approximate": {
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "precision": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Precision"
+        },
+        "normalization_status": {
+          "enum": [
+            "normalized",
+            "unchanged",
+            "ambiguous",
+            "unsupported"
+          ],
+          "title": "Normalization Status",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "text",
+            "entity",
+            "other"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        },
+        "attributes": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "original_text",
+        "unit",
+        "currency",
+        "scale",
+        "approximate",
+        "precision",
+        "normalization_status",
+        "rule_version",
+        "kind",
+        "normalized",
+        "attributes"
+      ],
+      "title": "SemanticValue",
+      "type": "object"
+    },
+    "SpanSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "span",
+          "title": "Kind",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "start",
+        "end"
+      ],
+      "title": "SpanSelector",
+      "type": "object"
+    },
+    "TimeContext": {
+      "additionalProperties": false,
+      "properties": {
+        "original_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Original Label"
+        },
+        "kind": {
+          "enum": [
+            "instant",
+            "interval",
+            "fiscal_year",
+            "quarter",
+            "half_year",
+            "unspecified"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "End"
+        },
+        "calendar_basis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Calendar Basis"
+        },
+        "year_label_convention": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Year Label Convention"
+        },
+        "resolution_status": {
+          "enum": [
+            "resolved",
+            "ambiguous",
+            "unspecified"
+          ],
+          "title": "Resolution Status",
+          "type": "string"
+        },
+        "publication_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Publication Date"
+        },
+        "as_of_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "As Of Date"
+        },
+        "effective_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Effective Date"
+        }
+      },
+      "required": [
+        "original_label",
+        "kind",
+        "start",
+        "end",
+        "calendar_basis",
+        "year_label_convention",
+        "resolution_status",
+        "publication_date",
+        "as_of_date",
+        "effective_date"
+      ],
+      "title": "TimeContext",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "reasoning_version": {
+      "minLength": 1,
+      "title": "Reasoning Version",
+      "type": "string"
+    },
+    "pairs": {
+      "items": {
+        "$ref": "#/$defs/ReasonPair"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Pairs",
+      "type": "array"
+    }
+  },
+  "required": [
+    "contract_version",
+    "request_id",
+    "run_id",
+    "reasoning_version",
+    "pairs"
+  ],
+  "title": "ReasonRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
