@@ -1,0 +1,160 @@
+{
+  "$defs": {
+    "ProcessingLimits": {
+      "additionalProperties": false,
+      "properties": {
+        "max_pages": {
+          "maximum": 10000,
+          "minimum": 1,
+          "title": "Max Pages",
+          "type": "integer"
+        },
+        "max_bytes": {
+          "minimum": 1,
+          "title": "Max Bytes",
+          "type": "integer"
+        },
+        "timeout_seconds": {
+          "maximum": 3600,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        },
+        "chunk_token_budget": {
+          "minimum": 128,
+          "title": "Chunk Token Budget",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "max_pages",
+        "max_bytes",
+        "timeout_seconds",
+        "chunk_token_budget"
+      ],
+      "title": "ProcessingLimits",
+      "type": "object"
+    },
+    "Versions": {
+      "additionalProperties": false,
+      "properties": {
+        "pipeline": {
+          "minLength": 1,
+          "title": "Pipeline",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "conversion": {
+          "minLength": 1,
+          "title": "Conversion",
+          "type": "string"
+        },
+        "chunking": {
+          "minLength": 1,
+          "title": "Chunking",
+          "type": "string"
+        },
+        "normalization": {
+          "minLength": 1,
+          "title": "Normalization",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "prompt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Prompt"
+        }
+      },
+      "required": [
+        "pipeline",
+        "schema_version",
+        "conversion",
+        "chunking",
+        "normalization",
+        "model",
+        "prompt"
+      ],
+      "title": "Versions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "document_id": {
+      "format": "uuid",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "lease_token": {
+      "format": "uuid",
+      "title": "Lease Token",
+      "type": "string"
+    },
+    "storage_key": {
+      "pattern": "^[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)*\\.[A-Za-z0-9]+$",
+      "title": "Storage Key",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    },
+    "limits": {
+      "$ref": "#/$defs/ProcessingLimits"
+    }
+  },
+  "required": [
+    "contract_version",
+    "request_id",
+    "document_id",
+    "run_id",
+    "lease_token",
+    "storage_key",
+    "sha256",
+    "versions",
+    "limits"
+  ],
+  "title": "ProcessRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
