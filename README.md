@@ -196,10 +196,9 @@ limits**. No upload endpoint exists in this milestone.
 
 ## Video Demo
 
-No submission video exists yet. Milestone 1 cannot demonstrate the assignment's
-four semantic cases. The later video must be at most three minutes and visibly
-show real PDF processing, corroboration, a defensible contradiction, reconciliation,
-and an actual extraction/reasoning failure with its handling.
+<video src="Superjoin%20Demo.mp4" controls width="800"></video>
+
+[Download the demo video](Superjoin%20Demo.mp4)
 
 ## Approach
 
