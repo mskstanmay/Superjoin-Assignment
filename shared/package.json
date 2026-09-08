@@ -1,0 +1,19 @@
+{
+  "name": "@superjoin/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./validator.mjs"
+    }
+  },
+  "scripts": {
+    "build": "node ../scripts/generate-contract-types.mjs --check"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}
