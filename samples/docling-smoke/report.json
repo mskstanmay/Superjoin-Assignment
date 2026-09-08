@@ -1,0 +1,13 @@
+{
+  "docling_version": "2.126.0",
+  "pipeline": "StandardPdfPipeline",
+  "ocr": false,
+  "table_structure": false,
+  "pages": 1,
+  "blocks": 2,
+  "physical_pages": [
+    1
+  ],
+  "elapsed_seconds": 72.516,
+  "llm_calls": 0
+}
