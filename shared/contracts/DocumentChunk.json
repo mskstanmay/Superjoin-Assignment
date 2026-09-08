@@ -1,0 +1,55 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "chunk_index": {
+      "minimum": 0,
+      "title": "Chunk Index",
+      "type": "integer"
+    },
+    "block_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Block Ids",
+      "type": "array"
+    },
+    "contextualized_text": {
+      "title": "Contextualized Text",
+      "type": "string"
+    },
+    "token_count": {
+      "minimum": 0,
+      "title": "Token Count",
+      "type": "integer"
+    },
+    "chunk_policy_version": {
+      "minLength": 1,
+      "title": "Chunk Policy Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "run_id",
+    "chunk_index",
+    "block_ids",
+    "contextualized_text",
+    "token_count",
+    "chunk_policy_version"
+  ],
+  "title": "DocumentChunk",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
