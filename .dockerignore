@@ -1,0 +1,13 @@
+.git
+.env
+.env.*
+!.env.example
+node_modules
+**/node_modules
+**/dist
+.local-tools
+.runtime
+processing/.venv
+**/__pycache__
+**/.pytest_cache
+reference
