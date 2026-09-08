@@ -1,0 +1,272 @@
+{
+  "$defs": {
+    "BlockSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "block",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "BlockSelector",
+      "type": "object"
+    },
+    "BoundingBox": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "title": "Left",
+          "type": "number"
+        },
+        "top": {
+          "title": "Top",
+          "type": "number"
+        },
+        "right": {
+          "title": "Right",
+          "type": "number"
+        },
+        "bottom": {
+          "title": "Bottom",
+          "type": "number"
+        },
+        "coordinate_origin": {
+          "enum": [
+            "TOPLEFT",
+            "BOTTOMLEFT"
+          ],
+          "title": "Coordinate Origin",
+          "type": "string"
+        },
+        "page_width": {
+          "exclusiveMinimum": 0,
+          "title": "Page Width",
+          "type": "number"
+        },
+        "page_height": {
+          "exclusiveMinimum": 0,
+          "title": "Page Height",
+          "type": "number"
+        }
+      },
+      "required": [
+        "left",
+        "top",
+        "right",
+        "bottom",
+        "coordinate_origin",
+        "page_width",
+        "page_height"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "CellSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "cell",
+          "title": "Kind",
+          "type": "string"
+        },
+        "row": {
+          "minimum": 0,
+          "title": "Row",
+          "type": "integer"
+        },
+        "column": {
+          "minimum": 0,
+          "title": "Column",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "row",
+        "column"
+      ],
+      "title": "CellSelector",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_page": {
+          "minimum": 1,
+          "title": "Physical Page",
+          "type": "integer"
+        },
+        "printed_labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Printed Labels",
+          "type": "array"
+        },
+        "original_page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Original Page"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundingBox"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "physical_page",
+        "printed_labels",
+        "original_page",
+        "bbox"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "SpanSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "span",
+          "title": "Kind",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "start",
+        "end"
+      ],
+      "title": "SpanSelector",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "fact_id": {
+      "format": "uuid",
+      "title": "Fact Id",
+      "type": "string"
+    },
+    "document_id": {
+      "format": "uuid",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "block_id": {
+      "format": "uuid",
+      "title": "Block Id",
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "assertion",
+        "value",
+        "subject",
+        "row_header",
+        "column_header",
+        "unit",
+        "time",
+        "footnote",
+        "qualifier"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "selector": {
+      "discriminator": {
+        "mapping": {
+          "block": "#/$defs/BlockSelector",
+          "cell": "#/$defs/CellSelector",
+          "span": "#/$defs/SpanSelector"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/SpanSelector"
+        },
+        {
+          "$ref": "#/$defs/CellSelector"
+        },
+        {
+          "$ref": "#/$defs/BlockSelector"
+        }
+      ],
+      "title": "Selector"
+    },
+    "quote": {
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/Provenance"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    },
+    "validation_status": {
+      "enum": [
+        "validated",
+        "rejected",
+        "pending"
+      ],
+      "title": "Validation Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "fact_id",
+    "document_id",
+    "run_id",
+    "block_id",
+    "role",
+    "selector",
+    "quote",
+    "provenance",
+    "validation_status"
+  ],
+  "title": "Evidence",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
