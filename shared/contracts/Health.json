@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "service": {
+      "enum": [
+        "backend",
+        "processing"
+      ],
+      "title": "Service",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "degraded"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "1.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "checks": {
+      "additionalProperties": {
+        "enum": [
+          "ok",
+          "unavailable",
+          "not_configured",
+          "not_implemented"
+        ],
+        "type": "string"
+      },
+      "title": "Checks",
+      "type": "object"
+    }
+  },
+  "required": [
+    "service",
+    "status",
+    "contract_version",
+    "checks"
+  ],
+  "title": "Health",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
