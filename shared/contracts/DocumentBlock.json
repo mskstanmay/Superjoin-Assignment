@@ -1,0 +1,189 @@
+{
+  "$defs": {
+    "BoundingBox": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "title": "Left",
+          "type": "number"
+        },
+        "top": {
+          "title": "Top",
+          "type": "number"
+        },
+        "right": {
+          "title": "Right",
+          "type": "number"
+        },
+        "bottom": {
+          "title": "Bottom",
+          "type": "number"
+        },
+        "coordinate_origin": {
+          "enum": [
+            "TOPLEFT",
+            "BOTTOMLEFT"
+          ],
+          "title": "Coordinate Origin",
+          "type": "string"
+        },
+        "page_width": {
+          "exclusiveMinimum": 0,
+          "title": "Page Width",
+          "type": "number"
+        },
+        "page_height": {
+          "exclusiveMinimum": 0,
+          "title": "Page Height",
+          "type": "number"
+        }
+      },
+      "required": [
+        "left",
+        "top",
+        "right",
+        "bottom",
+        "coordinate_origin",
+        "page_width",
+        "page_height"
+      ],
+      "title": "BoundingBox",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_page": {
+          "minimum": 1,
+          "title": "Physical Page",
+          "type": "integer"
+        },
+        "printed_labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Printed Labels",
+          "type": "array"
+        },
+        "original_page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Original Page"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundingBox"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "physical_page",
+        "printed_labels",
+        "original_page",
+        "bbox"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "document_id": {
+      "format": "uuid",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "local_ref": {
+      "minLength": 1,
+      "title": "Local Ref",
+      "type": "string"
+    },
+    "label": {
+      "minLength": 1,
+      "title": "Label",
+      "type": "string"
+    },
+    "original_text": {
+      "title": "Original Text",
+      "type": "string"
+    },
+    "structure": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Structure",
+      "type": "object"
+    },
+    "parent_block_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Parent Block Id"
+    },
+    "section": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Section",
+      "type": "array"
+    },
+    "reading_order": {
+      "minimum": 0,
+      "title": "Reading Order",
+      "type": "integer"
+    },
+    "provenance": {
+      "items": {
+        "$ref": "#/$defs/Provenance"
+      },
+      "minItems": 1,
+      "title": "Provenance",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "document_id",
+    "run_id",
+    "local_ref",
+    "label",
+    "original_text",
+    "structure",
+    "parent_block_id",
+    "section",
+    "reading_order",
+    "provenance"
+  ],
+  "title": "DocumentBlock",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
