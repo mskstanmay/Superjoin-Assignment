@@ -1,0 +1,279 @@
+{
+  "$defs": {
+    "Counts": {
+      "additionalProperties": false,
+      "properties": {
+        "pages_processed": {
+          "minimum": 0,
+          "title": "Pages Processed",
+          "type": "integer"
+        },
+        "pages_total": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pages Total"
+        },
+        "chunks_processed": {
+          "minimum": 0,
+          "title": "Chunks Processed",
+          "type": "integer"
+        },
+        "facts_accepted": {
+          "minimum": 0,
+          "title": "Facts Accepted",
+          "type": "integer"
+        },
+        "facts_rejected": {
+          "minimum": 0,
+          "title": "Facts Rejected",
+          "type": "integer"
+        },
+        "comparisons_completed": {
+          "minimum": 0,
+          "title": "Comparisons Completed",
+          "type": "integer"
+        },
+        "comparisons_failed": {
+          "minimum": 0,
+          "title": "Comparisons Failed",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "pages_processed",
+        "pages_total",
+        "chunks_processed",
+        "facts_accepted",
+        "facts_rejected",
+        "comparisons_completed",
+        "comparisons_failed"
+      ],
+      "title": "Counts",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "ProcessingStatus": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "uploaded",
+            "queued",
+            "processing",
+            "retry_wait",
+            "completed",
+            "partially_completed",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stage": {
+          "anyOf": [
+            {
+              "enum": [
+                "document_understanding",
+                "extraction",
+                "normalization",
+                "matching",
+                "reasoning"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stage"
+        },
+        "counts": {
+          "$ref": "#/$defs/Counts"
+        }
+      },
+      "required": [
+        "status",
+        "stage",
+        "counts"
+      ],
+      "title": "ProcessingStatus",
+      "type": "object"
+    },
+    "Versions": {
+      "additionalProperties": false,
+      "properties": {
+        "pipeline": {
+          "minLength": 1,
+          "title": "Pipeline",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "conversion": {
+          "minLength": 1,
+          "title": "Conversion",
+          "type": "string"
+        },
+        "chunking": {
+          "minLength": 1,
+          "title": "Chunking",
+          "type": "string"
+        },
+        "normalization": {
+          "minLength": 1,
+          "title": "Normalization",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "prompt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Prompt"
+        }
+      },
+      "required": [
+        "pipeline",
+        "schema_version",
+        "conversion",
+        "chunking",
+        "normalization",
+        "model",
+        "prompt"
+      ],
+      "title": "Versions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "document_id": {
+      "format": "uuid",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "processing": {
+      "$ref": "#/$defs/ProcessingStatus"
+    },
+    "attempt": {
+      "minimum": 0,
+      "title": "Attempt",
+      "type": "integer"
+    },
+    "heartbeat_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Heartbeat At"
+    },
+    "next_attempt_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Next Attempt At"
+    },
+    "lease_token": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Lease Token"
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    },
+    "checkpoint": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Checkpoint",
+      "type": "object"
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Started At"
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ended At"
+    }
+  },
+  "required": [
+    "id",
+    "document_id",
+    "processing",
+    "attempt",
+    "heartbeat_at",
+    "next_attempt_at",
+    "lease_token",
+    "versions",
+    "checkpoint",
+    "started_at",
+    "ended_at"
+  ],
+  "title": "ProcessingJob",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
